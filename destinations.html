@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Wanderlust Travels</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles specific to destinations page */
+        .page-banner {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/destinations-bg.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        
+        .destination-detail {
+            padding: 50px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .destination-detail:last-child {
+            border-bottom: none;
+        }
+        
+        .destination-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .destination-info-reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .destination-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .destination-image img {
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .destination-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .destination-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .destination-text p {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+            line-height: 1.8;
+        }
+        
+        .destination-highlights {
+            margin: 20px 0;
+        }
+        
+        .destination-highlights h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .highlights-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .highlight-item i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .best-time {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .best-time h4 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .best-time h4 i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .related-packages {
+            margin-top: 30px;
+        }
+        
+        .related-packages h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .package-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .destination-info, .destination-info-reverse {
+                flex-direction: column;
+            }
+            
+            .destination-image img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Wanderlust <span>Travels</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html" class="active">Destinations</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Explore Incredible India</h1>
+            <p>Discover the diverse landscapes, rich culture, and ancient heritage</p>
+        </div>
+    </section>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+918851332855" class="whatsapp-float" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="whatsapp-icon"/>
+    </a>
+    <!-- Search Form Popup -->
+    <div class="search-popup" id="search-popup">
+        <div class="search-container">
+            <div class="close-btn" id="close-search">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2>Find Your Perfect Destination</h2>
+            <form id="search-form">
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" placeholder="Where do you want to go?">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="check-in">Check In</label>
+                        <input type="date" id="check-in">
+                    </div>
+                    <div class="form-group">
+                        <label for="check-out">Check Out</label>
+                        <input type="date" id="check-out">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="adults">Adults</label>
+                        <select id="adults">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="children">Children</label>
+                        <select id="children">
+                            <option value="0" selected>0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Search Now</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Destinations Content -->
+    <section class="container">
+        <!-- Taj Mahal -->
+        <div class="destination-detail" id="taj-mahal">
+            <div class="destination-info">
+                <div class="destination-image">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada" alt="Taj Mahal, Agra">
+                </div>
+                <div class="destination-text">
+                    <h2>Taj Mahal</h2>
+                    <p>The Taj Mahal is an ivory-white marble mausoleum on the right bank of the river Yamuna in Agra, Uttar Pradesh. It was commissioned in 1632 by the Mughal emperor Shah Jahan to house the tomb of his favorite wife, Mumtaz Mahal; it also houses the tomb of Shah Jahan himself.</p>
+                    
+                    <p>The Taj Mahal was designated as a UNESCO World Heritage Site in 1983 for being "the jewel of Muslim art in India and one of the universally admired masterpieces of the world's heritage". It is regarded by many as the best example of Mughal architecture and a symbol of India's rich history.</p>
+                    
+                    <div class="destination-highlights">
+                        <h3>Highlights</h3>
+                        <div class="highlights-list">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Stunning Architecture</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Beautiful Gardens</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>UNESCO Heritage Site</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sunset Views</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="best-time">
+                        <h4><i class="fas fa-calendar-alt"></i> Best Time to Visit</h4>
+                        <p>October to March is the best time to visit the Taj Mahal when the weather is pleasant. Early morning visits offer fewer crowds and beautiful lighting for photography.</p>
+                    </div>
+                    
+                    <div class="related-packages">
+                        <h3>Related Tour Packages</h3>
+                        <div class="package-buttons">
+                            <a href="packages.html#golden-triangle" class="btn-primary">Golden Triangle Tour</a>
+                            <a href="packages.html#agra-delhi" class="btn-secondary">Agra & Delhi Heritage Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Jaipur -->
+        <div class="destination-detail" id="jaipur">
+            <div class="destination-info destination-info-reverse">
+                <div class="destination-image">
+                    <img src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66" alt="Jaipur, Rajasthan">
+                </div>
+                <div class="destination-text">
+                    <h2>Pink City - Jaipur</h2>
+                    <p>Jaipur, the capital of Rajasthan, is known as the "Pink City" due to the distinctive color of its buildings. The city was founded in 1727 by Maharaja Sawai Jai Singh II, who was the ruler of Amber. The city's colorful, chaotic streets ebb and flow with a heady brew of old and new.</p>
+                    
+                    <p>Jaipur is part of the Golden Triangle tourist circuit along with Delhi and Agra. It hosts several attractions like the City Palace, Govind Dev Ji Temple, Vidhan Sabha, Birla Temple, several massive Rajput forts, and so much more.</p>
+                    
+                    <div class="destination-highlights">
+                        <h3>Highlights</h3>
+                        <div class="highlights-list">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Amber Fort</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Hawa Mahal</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>City Palace</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Jantar Mantar</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Local Bazaars</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Rajasthani Cuisine</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="best-time">
+                        <h4><i class="fas fa-calendar-alt"></i> Best Time to Visit</h4>
+                        <p>October to March is the best time to visit Jaipur when the weather is pleasant and perfect for sightseeing. Avoid summer months (April to June) when temperatures can soar above 40°C.</p>
+                    </div>
+                    
+                    <div class="related-packages">
+                        <h3>Related Tour Packages</h3>
+                        <div class="package-buttons">
+                            <a href="packages.html#golden-triangle" class="btn-primary">Golden Triangle Tour</a>
+                            <a href="packages.html#rajasthan-heritage" class="btn-secondary">Rajasthan Heritage Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Goa -->
+        <div class="destination-detail" id="goa">
+            <div class="destination-info">
+                <div class="destination-image">
+                    <img src="images\goa-beaches.jpeg" alt="Beaches of Goa">
+                </div>
+                <div class="destination-text">
+                    <h2>Beaches of Goa</h2>
+                    <p>Goa is a state on the southwestern coast of India within the region known as the Konkan. It is bounded by the state of Maharashtra to the north and Karnataka to the east and south, with the Arabian Sea forming its western coast.</p>
+                    
+                    <p>Goa is India's smallest state by area and the fourth-smallest by population. It has the highest GDP per capita among all Indian states, two and a half times that of the country. Panaji is the state's capital, while Vasco da Gama is its largest city. The historic city of Margao still exhibits the cultural influence of the Portuguese, who first landed in the early 16th century.</p>
+                    
+                    <div class="destination-highlights">
+                        <h3>Highlights</h3>
+                        <div class="highlights-list">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Calangute Beach</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Baga Beach</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Anjuna Beach</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Water Sports</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Nightlife</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Portuguese Architecture</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="best-time">
+                        <h4><i class="fas fa-calendar-alt"></i> Best Time to Visit</h4>
+                        <p>November to February is the best time to visit Goa when the weather is pleasant and perfect for beach activities. The monsoon season (June to September) offers a different experience with lush green landscapes.</p>
+                    </div>
+                    
+                    <div class="related-packages">
+                        <h3>Related Tour Packages</h3>
+                        <div class="package-buttons">
+                            <a href="packages.html#goa-beach" class="btn-primary">Goa Beach Vacation</a>
+                            <a href="packages.html#goa-adventure" class="btn-secondary">Goa Adventure Package</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Kerala -->
+        <div class="destination-detail" id="kerala">
+            <div class="destination-info destination-info-reverse">
+                <div class="destination-image">
+                    <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23" alt="Kerala Backwaters">
+                </div>
+                <div class="destination-text">
+                    <h2>Kerala Backwaters</h2>
+                    <p>The Kerala backwaters are a network of interconnected canals, rivers, lakes, and inlets, a labyrinthine system formed by more than 900 km of waterways. In the midst of this landscape, there are a number of towns and cities, which serve as the starting and end points of backwater cruises.</p>
+                    
+                    <p>The backwaters were formed by the action of waves and shore currents creating low barrier islands across the mouths of the many rivers flowing down from the Western Ghats range. The Kerala Backwaters are a chain of brackish lagoons and lakes lying parallel to the Arabian Sea coast.</p>
+                    
+                    <div class="destination-highlights">
+                        <h3>Highlights</h3>
+                        <div class="highlights-list">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Houseboat Stays</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Alleppey</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Kumarakom</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Local Village Life</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ayurvedic Treatments</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Kerala Cuisine</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="best-time">
+                        <h4><i class="fas fa-calendar-alt"></i> Best Time to Visit</h4>
+                        <p>September to March is the best time to visit Kerala Backwaters when the weather is pleasant. The monsoon season (June to August) offers a unique experience with lush green landscapes but may limit some activities.</p>
+                    </div>
+                    
+                    <div class="related-packages">
+                        <h3>Related Tour Packages</h3>
+                        <div class="package-buttons">
+                            <a href="packages.html#kerala-backwaters" class="btn-primary">Kerala Backwaters Tour</a>
+                            <a href="packages.html#kerala-complete" class="btn-secondary">Complete Kerala Package</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Varanasi -->
+        <div class="destination-detail" id="varanasi">
+            <div class="destination-info">
+                <div class="destination-image">
+                    <img src="images\varanasi-ghat.png" alt="Varanasi Ghats">
+                </div>
+                <div class="destination-text">
+                    <h2>Holy Ghats of Varanasi</h2>
+                    <p>Varanasi, also known as Benares or Kashi, is a city on the banks of the river Ganges in Uttar Pradesh, India. A major religious hub in India, it is the holiest of the seven sacred cities in Hinduism and Jainism, and played an important role in the development of Buddhism.</p>
+                    
+                    <p>The city is known worldwide for its many ghats, embankments made in steps of stone slabs along the river bank where pilgrims perform ritual ablutions. The Dashashwamedh Ghat is the main and probably the oldest ghat of Varanasi located on the Ganges, close to the Kashi Vishwanath Temple.</p>
+                    
+                    <div class="destination-highlights">
+                        <h3>Highlights</h3>
+                        <div class="highlights-list">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Dashashwamedh Ghat</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Manikarnika Ghat</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Kashi Vishwanath Temple</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Evening Aarti</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Boat Rides</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sarnath</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="best-time">
+                        <h4><i class="fas fa-calendar-alt"></i> Best Time to Visit</h4>
+                        <p>October to March is the best time to visit Varanasi when the weather is pleasant. Dev Deepawali in November and Maha Shivaratri in February/March are special times to experience the city's spiritual energy.</p>
+                    </div>
+                    
+                    <div class="related-packages">
+                        <h3>Related Tour Packages</h3>
+                        <div class="package-buttons">
+                            <a href="packages.html#spiritual-india" class="btn-primary">Spiritual India Tour</a>
+                            <a href="packages.html#varanasi-special" class="btn-secondary">Varanasi Special Package</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Darjeeling -->
+        <div class="destination-detail" id="darjeeling">
+            <div class="destination-info destination-info-reverse">
+                <div class="destination-image">
+                    <img src="https://images.unsplash.com/photo-1591089101324-2280d9260000" alt="Darjeeling Tea Gardens">
+                </div>
+                <div class="destination-text">
+                    <h2>Tea Gardens of Darjeeling</h2>
+                    <p>Darjeeling is a town in India's West Bengal state, in the Himalayan foothills. Once a summer resort for the British Raj elite, it remains the terminus of the narrow-gauge Darjeeling Himalayan Railway, or "Toy Train," completed in 1881.</p>
+                    
+                    <p>It's famed for the distinctive black tea grown on plantations that dot its surrounding slopes. Its backdrop is Mt. Kanchenjunga, among the world's highest peaks. Darjeeling is internationally renowned for its tea industry and the Darjeeling Himalayan Railway, a UNESCO World Heritage Site.</p>
+                    
+                    <div class="destination-highlights">
+                        <h3>Highlights</h3>
+                        <div class="highlights-list">
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Tea Plantations</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Tiger Hill</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Toy Train Ride</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Himalayan Views</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Batasia Loop</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Peace Pagoda</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="best-time">
+                        <h4><i class="fas fa-calendar-alt"></i> Best Time to Visit</h4>
+                        <p>March to May and September to November are the best times to visit Darjeeling when the weather is pleasant and offers clear views of the Himalayas. Avoid the monsoon season (June to August) when landslides are common.</p>
+                    </div>
+                    
+                    <div class="related-packages">
+                        <h3>Related Tour Packages</h3>
+                        <div class="package-buttons">
+                            <a href="packages.html#northeast-explorer" class="btn-primary">Northeast Explorer</a>
+                            <a href="packages.html#darjeeling-sikkim" class="btn-secondary">Darjeeling & Sikkim Tour</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get exclusive offers, travel tips, and updates delivered to your inbox</p>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Wanderlust Travels</h3>
+                    <p>Your trusted partner for exploring the wonders of India. We provide unforgettable travel experiences with personalized service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="destinations.html#taj-mahal">Taj Mahal, Agra</a></li>
+                        <li><a href="destinations.html#jaipur">Jaipur, Rajasthan</a></li>
+                        <li><a href="destinations.html#goa">Beaches of Goa</a></li>
+                        <li><a href="destinations.html#kerala">Kerala Backwaters</a></li>
+                        <li><a href="destinations.html#varanasi">Varanasi Ghats</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Mumbai, India</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@wanderlusttravels.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 7:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wanderlust Travels. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="image-manager.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

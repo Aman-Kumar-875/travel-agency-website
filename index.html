@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="travel agency, book holiday packages, tour planner India, international travel deals, customized holidays, online tour booking, budget and luxury trips, honeymoon destinations, best travel services">
+    <meta name="description" content="Plan your next journey with the best travel deals. From exotic international holidays to serene Indian getaways, discover customized travel packages tailored to your needs. Book flights, hotels, and tours all in one place.">
+    <meta name="author" content="Wanderlust Travels">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="canonical" href="https://www.wanderlusttravels.com/">
+    <meta property="og:title" content="Wanderlust Travels - Explore India" />
+    <meta property="og:description" content="Discover the best travel packages and explore breathtaking destinations in India with Wanderlust Travels." />
+    <meta property="og:image" content="https://www.wanderlusttravels.com/images/og-image.jpg" />
+    <meta property="og:url" content="https://www.wanderlusttravels.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Wanderlust Travels" />
+    <meta property="og:locale" content="en_US" />    
+    <title>Wanderlust Travels - Explore India</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">Wanderlust <span>Travels</span></a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover the Magic of India</h1>
+            <p>Explore breathtaking destinations with our exclusive travel packages</p>
+            <button class="btn-primary" id="search-btn">Search Destinations</button>
+        </div>
+    </section>
+
+    <!-- Search Form Popup -->
+    <div class="search-popup" id="search-popup">
+        <div class="search-container">
+            <div class="close-btn" id="close-search">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2>Find Your Perfect Destination</h2>
+            <form id="search-form">
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" placeholder="Where do you want to go?">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="check-in">Check In</label>
+                        <input type="date" id="check-in">
+                    </div>
+                    <div class="form-group">
+                        <label for="check-out">Check Out</label>
+                        <input type="date" id="check-out">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="adults">Adults</label>
+                        <select id="adults">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="children">Children</label>
+                        <select id="children">
+                            <option value="0" selected>0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary">Search Now</button>
+            </form>
+        </div>
+    </div>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+918851332855" class="whatsapp-float" target="_blank">
+        <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="whatsapp-icon"/>
+    </a>      
+    <!-- Popular Destinations Section -->
+    <section class="destinations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Destinations</h2>
+                <p>Explore the most beautiful places in India</p>
+            </div>
+            <div class="destination-grid">
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada" 
+                         alt="Taj Mahal, Agra" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/e8d2a9/333333?text=Taj+Mahal';">
+                    <div class="destination-content">
+                        <h3>Taj Mahal, Agra</h3>
+                        <p>Symbol of eternal love</p>
+                        <a href="destinations.html#taj-mahal" class="btn-secondary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1567157577867-05ccb1388e66" 
+                         alt="Jaipur, Rajasthan" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/f8a978/333333?text=Jaipur';">
+                    <div class="destination-content">
+                        <h3>Jaipur, Rajasthan</h3>
+                        <p>The Pink City of India</p>
+                        <a href="destinations.html#jaipur" class="btn-secondary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="images\goa-beaches.jpeg" 
+                         alt="Goa Beaches" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/a3d9ff/333333?text=Goa+Beaches';">
+                    <div class="destination-content">
+                        <h3>Beaches of Goa</h3>
+                        <p>Sun, sand, and sea</p>
+                        <a href="destinations.html#goa" class="btn-secondary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23" 
+                         alt="Kerala Backwaters" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/7fcd91/333333?text=Kerala+Backwaters';">
+                    <div class="destination-content">
+                        <h3>Kerala Backwaters</h3>
+                        <p>Serene waterways and houseboats</p>
+                        <a href="destinations.html#kerala" class="btn-secondary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="images\varanasi-ghat.png" 
+                         alt="Varanasi Ghats" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/ffb347/333333?text=Varanasi+Ghats';">
+                    <div class="destination-content">
+                        <h3>Varanasi Ghats</h3>
+                        <p>Spiritual heart of India</p>
+                        <a href="destinations.html#varanasi" class="btn-secondary">Explore</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://images.unsplash.com/photo-1591089101324-2280d9260000" 
+                         alt="Darjeeling Tea Gardens" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/b5e8a5/333333?text=Darjeeling+Tea+Gardens';">
+                    <div class="destination-content">
+                        <h3>Darjeeling Tea Gardens</h3>
+                        <p>Misty mountains and tea plantations</p>
+                        <a href="destinations.html#darjeeling" class="btn-secondary">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Packages Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Popular Packages</h2>
+                <p>Discover our most loved travel experiences</p>
+            </div>
+            <div class="package-grid">
+                <div class="package-card">
+                    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da" 
+                         alt="Golden Triangle Tour" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/f5d76e/333333?text=Golden+Triangle+Tour';">
+                    <div class="package-content">
+                        <div class="package-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(120 reviews)</span>
+                        </div>
+                        <h3>Golden Triangle Tour</h3>
+                        <p>Delhi - Agra - Jaipur</p>
+                        <div class="package-info">
+                            <span><i class="far fa-clock"></i> 6 Days</span>
+                            <span><i class="far fa-user"></i> Max People: 20</span>
+                            <span><i class="fas fa-map-marker-alt"></i> North India-Domestic</span>
+                        </div>
+                        <div class="package-price">
+                            <span class="price">₹25,000</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="packages.html#golden-triangle" class="btn-primary">View Details</a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="images\kerala-backwaters.jpg" 
+                         alt="Kerala Backwaters Tour" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/7fcd91/333333?text=Kerala+Backwaters+Tour';">
+                    <div class="package-content">
+                        <div class="package-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(98 reviews)</span>
+                        </div>
+                        <h3>Kerala Backwaters Tour</h3>
+                        <p>Kochi - Munnar - Thekkady - Alleppey</p>
+                        <div class="package-info">
+                            <span><i class="far fa-clock"></i> 7 Days</span>
+                            <span><i class="far fa-user"></i> Max People: 15</span>
+                            <span><i class="fas fa-map-marker-alt"></i> South India-Domestic</span>
+                        </div>
+                        <div class="package-price">
+                            <span class="price">₹30,000</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="packages.html#kerala-backwaters" class="btn-primary">View Details</a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00" 
+                         alt="Rajasthan Heritage Tour" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/f8a978/333333?text=Rajasthan+Heritage+Tour';">
+                    <div class="package-content">
+                        <div class="package-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(145 reviews)</span>
+                        </div>
+                        <h3>Rajasthan Heritage Tour</h3>
+                        <p>Jaipur - Jodhpur - Udaipur - Jaisalmer</p>
+                        <div class="package-info">
+                            <span><i class="far fa-clock"></i> 10 Days</span>
+                            <span><i class="far fa-user"></i> Max People: 18</span>
+                            <span><i class="fas fa-map-marker-alt"></i> North India-Domestic</span>
+                        </div>
+                        <div class="package-price">
+                            <span class="price">₹45,000</span>
+                            <span class="per-person">per person</span>
+                        </div>
+                        <a href="packages.html#rajasthan-heritage" class="btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-btn">
+                <a href="packages.html" class="btn-secondary">View All Packages</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Travelers Say</h2>
+                <p>Hear from our satisfied customers</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <p>"Our trip to Rajasthan was absolutely magical! The accommodations were excellent, and our guide was knowledgeable and friendly. Wanderlust Travels took care of everything!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" 
+                                 alt="Priya Sharma" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/60x60/e0e0e0/333333?text=PS';">
+                            <div>
+                                <h4>Priya Sharma</h4>
+                                <p>Delhi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"The Kerala package exceeded our expectations. The houseboat stay was the highlight of our trip. Thank you Wanderlust Travels for an unforgettable experience!"</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" 
+                                 alt="Rahul Mehta" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/60x60/e0e0e0/333333?text=RM';">
+                            <div>
+                                <h4>Rahul Mehta</h4>
+                                <p>Mumbai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p>"We booked the Golden Triangle tour and it was perfectly organized. The hotels were comfortable, the food was delicious, and we got to see all the major attractions."</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" 
+                                 alt="Ananya Patel" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/60x60/e0e0e0/333333?text=AP';">
+                            <div>
+                                <h4>Ananya Patel</h4>
+                                <p>Bangalore</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-controls">
+                <button class="testimonial-prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="testimonial-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="testimonial-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get exclusive offers, travel tips, and updates delivered to your inbox</p>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Wanderlust Travels</h3>
+                    <p>Your trusted partner for exploring the wonders of India. We provide unforgettable travel experiences with personalized service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="destinations.html#taj-mahal">Taj Mahal, Agra</a></li>
+                        <li><a href="destinations.html#jaipur">Jaipur, Rajasthan</a></li>
+                        <li><a href="destinations.html#goa">Beaches of Goa</a></li>
+                        <li><a href="destinations.html#kerala">Kerala Backwaters</a></li>
+                        <li><a href="destinations.html#varanasi">Varanasi Ghats</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Mumbai, India</li>
+                        <li><i class="fas fa-phone"></i> +91 885133 2855</li>
+                        <li><i class="fas fa-envelope"></i> info@wanderlusttravels.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 7:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wanderlust Travels. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="image-manager.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

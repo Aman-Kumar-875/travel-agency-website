@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="India tour packages, Domestic holiday packages, Goa beach vacation, Kerala backwaters tour, Himachal tour packages, Andaman honeymoon package, Sikkim travel deals, Rajasthan culture tour, VizTravels India packages, International tour packages from India, Budget foreign trips, Europe travel from India, Bali honeymoon deals, Dubai tour package, Thailand family vacation, Singapore Malaysia package, Switzerland luxury trip, Australia travel from India, USA Canada tour, Honeymoon travel packages, Online tour booking India, Customized holiday plans, VizTravels travel deals">
+    <meta name="description" content="Explore our exclusive travel packages for unforgettable experiences in India and abroad. Book your dream vacation with Wanderlust Travels.">
+    <meta name="author" content="Wanderlust Travels">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="google" content="notranslate">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <title>Travel Packages - Wanderlust Travels</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles specific to packages page */
+        .page-banner {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1530521954074-e64f6810b32d') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        
+        .package-filters {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: flex-end;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .filter-submit {
+            min-width: 120px;
+        }
+        
+        .package-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .package-detail {
+            margin-top: 30px;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+        
+        .package-detail h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .itinerary-list {
+            margin-top: 20px;
+        }
+        
+        .itinerary-day {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .itinerary-day:last-child {
+            border-bottom: none;
+        }
+        
+        .day-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .booking-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .booking-form h3 {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        .package-image{
+            background-color: white;
+        }
+        
+        .package-price {
+            margin-left: 30px;
+            margin-top: 25px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Wanderlust <span>Travels</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="packages.html" class="active">Packages</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Travel Packages</h1>
+            <p>Discover our exclusive travel packages for unforgettable experiences in India</p>
+        </div>
+    </section>
+
+    <!-- Package Filters -->
+    <section>
+        <div class="container">
+            <div class="package-filters">
+                <h2>Find Your Perfect Package</h2>
+                <form class="filter-form" id="package-filter-form">
+                    <div class="filter-group">
+                        <label for="filter-destination">Destination</label>
+                        <select id="filter-destination">
+                            <option value="">All Destinations</option>
+                            <option value="north-india">North India</option>
+                            <option value="south-india">South India</option>
+                            <option value="east-india">East India</option>
+                            <option value="west-india">West India</option>
+                            <option value="central-india">Central India</option>
+                            <option value="India-Domestic">India-Domestic</option>
+                            <option value="International">International</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-duration">Duration</label>
+                        <select id="filter-duration">
+                            <option value="">Any Duration</option>
+                            <option value="1-3">1-3 Days</option>
+                            <option value="4-7">4-7 Days</option>
+                            <option value="8-14">8-14 Days</option>
+                            <option value="15+">15+ Days</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-budget">Budget</label>
+                        <select id="filter-budget">
+                            <option value="">Any Budget</option>
+                            <option value="budget">Budget (Under ₹15,000)</option>
+                            <option value="mid-range">Mid-Range (₹15,000-₹30,000)</option>
+                            <option value="luxury">Luxury (₹30,000+)</option>
+                            <option value="royal">Royal (₹50,000+)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group filter-submit">
+                        <button type="submit" class="btn-primary">Filter Results</button>
+                    </div>
+                </form>
+            </div>
+            <!-- WhatsApp Floating Button -->
+            <a href="https://wa.me/+918851332855" class="whatsapp-float" target="_blank">
+            <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="whatsapp-icon"/>
+            </a>
+            <!-- Package List -->
+            <div class="package-list" id="package-list">
+                <!-- Andaman Island Tour -->
+                <div class="package-card" id="andaman-island" data-region="India-Domestic" data-duration="4-7" data-budget="luxury">
+                    <div class="package-image">
+                        <img src="images\andaman.jpg" alt="Andaman Island Tour">
+                        <div class="package-price">From ₹25,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Andaman Island Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+                        <p class="package-description">Explore the stunning beaches and crystal-clear waters of Andaman Islands.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> All Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="andaman-island">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Kashmir Tour -->
+                <div class="package-card" id="kashmir-tour" data-region="India-Domestic" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images/kashmir.jpg" alt="Kashmir Tour">
+                        <div class="package-price">From ₹19,499</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Kashmir Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p> 
+                        <p class="package-description">Experience the serene beauty of Srinagar and Pahalgam in the paradise of Kashmir.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> All Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="kashmir-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Maldives Beach Getaway -->
+                 <div class="package-card" id="maldives-beach" data-region="International" data-duration="4-7" data-budget="royal">
+                    <div class="package-image">
+                        <img src="images\maldives.jpg" alt="Maldives Beach Getaway">
+                        <div class="package-price">From ₹1,20,000</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Maldives Beach Getaway</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+                        <p class="package-description">Relax on the pristine beaches of Maldives with all-inclusive luxury resorts.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 5-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> All Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="maldives-beach">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Istanbul Honeymoon Package -->
+                <div class="package-card" id="istanbul-honeymoon" data-region="International" data-duration="4-7" data-budget="royal">
+                    <div class="package-image">
+                        <img src="images\istanbul.jpg" alt="Istanbul Honeymoon Package">
+                        <div class="package-price">From ₹64,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Istanbul Honeymoon</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 7 Days / 6 Nights</p>
+                        <p class="package-description">Experience the romance of Istanbul with a dinner cruise on the Bosphorus.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="istanbul-honeymoon">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Golden Triangle Tour -->
+                <div class="package-card" id="golden-triangle" data-region="north-india" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da" alt="Golden Triangle Tour">
+                        <div class="package-price">From ₹14,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Golden Triangle Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+                        <p class="package-description">Explore Delhi, Agra, and Jaipur in this classic Indian tour package.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="golden-triangle">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Kerala Backwaters Tour -->
+                <div class="package-card" id="kerala-backwaters" data-region="south-india" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images\kerala-backwaters.jpg" alt="Kerala Backwaters Tour">
+                        <div class="package-price">From ₹12,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Kerala Backwaters Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 7 Days / 6 Nights</p>
+                        <p class="package-description">Experience the serene backwaters, beaches, and hill stations of God's Own Country.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="kerala-backwaters">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Himachal Pradesh Tour -->
+                <div class="package-card" id="himachal-pradesh-tour" data-region="India-Domestic" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images/himachal.jpg" alt="Himachal Pradesh Tour">
+                        <div class="package-price">From ₹17,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Himachal Pradesh Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+                        <p class="package-description">Escape to the mountains with visits to Shimla & Manali in Himachal Pradesh.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals Included</span>
+                            <span><i class="fas fa-car"></i> Private Cab</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="himachal-pradesh-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Sikkim Tour -->
+                <div class="package-card" id="sikkim-tour" data-region="India-Domestic" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images/sikkim.jpg" alt="Sikkim Tour">
+                        <div class="package-price">From ₹19,499</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Sikkim Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Visit Gangtok, Tsomgo Lake, and Pelling to experience Sikkim’s serene monasteries and stunning landscapes.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals Included</span>
+                            <span><i class="fas fa-car"></i> Private Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="sikkim-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Gujarat Tour -->
+                <div class="package-card" id="gujarat-tour" data-region="India-Domestic" data-duration="4-7" data-budget="budget">
+                    <div class="package-image">
+                        <img src="images/gujarat.jpg" alt="Gujarat Tour">
+                        <div class="package-price">From ₹14,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Gujarat Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Experience Rann of Kutch, Gir National Park, Somnath Temple, and Ahmedabad’s heritage sites.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> Budget Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Breakfast</span>
+                            <span><i class="fas fa-car"></i> Local Transfers</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="gujarat-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Odisha Tour -->
+                <div class="package-card" id="odisha-tour" data-region="India-Domestic" data-duration="4-7" data-budget="budget">
+                    <div class="package-image">
+                        <img src="images/odisha.jpg" alt="Odisha Tour">
+                        <div class="package-price">From ₹13,499</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Odisha Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 4 Days / 3 Nights</p>
+                        <p class="package-description">Discover the Konark Sun Temple, Puri Beach, Chilika Lake, and Bhubaneswar's cultural sites.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> Budget Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals Included</span>
+                            <span><i class="fas fa-car"></i> AC Bus Transfers</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="odisha-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Tamil Nadu Tour -->
+                <div class="package-card" id="tamil-nadu-tour" data-region="India-Domestic" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images/tamilnadu.jpg" alt="Tamil Nadu Tour">
+                        <div class="package-price">From ₹18,499</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Tamil Nadu Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+                        <p class="package-description">Visit temples in Madurai, beaches in Rameswaram, and colonial charm of Ooty and Kodaikanal.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Breakfast</span>
+                            <span><i class="fas fa-car"></i> Private Vehicle</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="tamil-nadu-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Kerala Hill Stations Tour -->
+                <div class="package-card" id="kerala-hill-stations" data-region="south-india" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images/keralahill.jpg" alt="Kerala Hill Stations Tour">
+                        <div class="package-price">From ₹16,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Kerala Hill Stations Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Explore Munnar, Thekkady, and Alleppey with houseboat stay in Kerala.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals Included</span>
+                            <span><i class="fas fa-car"></i> Private Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="kerala-hill-stations">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Karnataka Tour -->
+                <div class="package-card" id="karnataka-tour" data-region="India-Domestic" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images/karnataka.jpg" alt="Karnataka Tour">
+                        <div class="package-price">From ₹17,499</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Karnataka Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+                        <p class="package-description">Visit Bangalore, Mysore, and Coorg with a mix of culture and nature.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals Included</span>
+                            <span><i class="fas fa-car"></i> Private Vehicle</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="karnataka-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Punjab Tour -->
+                <div class="package-card" id="punjab-tour" data-region="north-india" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images/punjab.jpg" alt="Punjab Tour">
+                        <div class="package-price">From ₹15,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Punjab Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Explore Amritsar, Chandigarh, and Patiala with a taste of Punjabi culture.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals Included</span>
+                            <span><i class="fas fa-car"></i> Private Vehicle</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="punjab-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Bali Tour -->
+                <div class="package-card" id="bali-tour" data-region="International" data-duration="4-7" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/bali.jpg" alt="Bali Tour">
+        <div class="package-price">From ₹35,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Bali Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+        <p class="package-description">Enjoy Bali’s pristine beaches, rice terraces, and vibrant nightlife in this exciting tour.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 5-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> All Meals Included</span>
+            <span><i class="fas fa-car"></i> Private Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="bali-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Thailand Tour -->
+                <div class="package-card" id="thailand-tour" data-region="International" data-duration="4-7" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/thailand.jpg" alt="Thailand Tour">
+        <div class="package-price">From ₹30,499</div>
+    </div>
+    <div class="package-content">
+        <h3>Thailand Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+        <p class="package-description">Explore Bangkok, Pattaya, and Phuket on this fun-filled, cultural journey in Thailand.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> Breakfast Included</span>
+            <span><i class="fas fa-car"></i> Guided Tours</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="thailand-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Dubai Tour -->
+                <div class="package-card" id="dubai-tour" data-region="International" data-duration="4-7" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/dubai.jpg" alt="Dubai Tour">
+        <div class="package-price">From ₹40,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Dubai Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+        <p class="package-description">Discover the grandeur of Dubai with desert safaris, shopping, and iconic landmarks like Burj Khalifa.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 5-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> All Meals Included</span>
+            <span><i class="fas fa-car"></i> Luxury Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="dubai-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Sri Lanka Tour -->
+                <div class="package-card" id="sri-lanka-tour" data-region="International" data-duration="4-7" data-budget="mid-range">
+    <div class="package-image">
+        <img src="images/srilanka.jpg" alt="Sri Lanka Tour">
+        <div class="package-price">From ₹28,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Sri Lanka Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+        <p class="package-description">Explore Colombo, Kandy, and the famous Sigiriya rock fortress in beautiful Sri Lanka.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> Meals Included</span>
+            <span><i class="fas fa-car"></i> Guided Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="sri-lanka-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Singapore Tour -->
+                <div class="package-card" id="singapore-tour" data-region="International" data-duration="4-7" data-budget="mid-range">
+    <div class="package-image">
+        <img src="images/singapore.jpg" alt="Singapore Tour">
+        <div class="package-price">From ₹33,499</div>
+    </div>
+    <div class="package-content">
+        <h3>Singapore Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+        <p class="package-description">Enjoy a mix of modern luxury and historical sights with a visit to Marina Bay, Sentosa, and Universal Studios.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> Meals Included</span>
+            <span><i class="fas fa-car"></i> Guided Tours</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="singapore-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Nepal Tour -->
+                <div class="package-card" id="nepal-tour" data-region="International" data-duration="4-7" data-budget="mid-range">
+    <div class="package-image">
+        <img src="images/nepal.jpg" alt="Nepal Tour">
+        <div class="package-price">From ₹25,499</div>
+    </div>
+    <div class="package-content">
+        <h3>Nepal Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+        <p class="package-description">Explore the beautiful temples, mountains, and culture of Nepal in this scenic tour.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> All Meals Included</span>
+            <span><i class="fas fa-car"></i> Guided Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="nepal-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Mauritius Tour -->
+                <div class="package-card" id="mauritius-tour" data-region="International" data-duration="4-7" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/mauritius.jpg" alt="Mauritius Tour">
+        <div class="package-price">From ₹50,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Mauritius Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+        <p class="package-description">Experience the tropical beauty of Mauritius, with its pristine beaches, nature reserves, and luxury resorts.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 5-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> All Meals Included</span>
+            <span><i class="fas fa-car"></i> Private Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="mauritius-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Malaysia Tour -->
+                <div class="package-card" id="malaysia-tour" data-region="International" data-duration="4-7" data-budget="mid-range">
+    <div class="package-image">
+        <img src="images/malaysia.jpg" alt="Malaysia Tour">
+        <div class="package-price">From ₹28,499</div>
+    </div>
+    <div class="package-content">
+        <h3>Malaysia Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+        <p class="package-description">Visit Kuala Lumpur, Langkawi, and Penang for a mix of urban exploration and beach relaxation in Malaysia.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> Breakfast Included</span>
+            <span><i class="fas fa-car"></i> Guided Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="malaysia-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Egypt Tour -->
+                <div class="package-card" id="egypt-tour" data-region="International" data-duration="7-10" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/egypt.jpg" alt="Egypt Tour">
+        <div class="package-price">From ₹65,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Egypt Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 9 Days / 8 Nights</p>
+        <p class="package-description">Discover the wonders of ancient Egypt, from the Great Pyramids to the Nile River cruise.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 5-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> All Meals Included</span>
+            <span><i class="fas fa-car"></i> Private Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="egypt-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Australia Tour -->
+                <div class="package-card" id="australia-tour" data-region="International" data-duration="7-10" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/australia.jpg" alt="Australia Tour">
+        <div class="package-price">From ₹75,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Australia Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 10 Days / 9 Nights</p>
+        <p class="package-description">Explore Sydney, Melbourne, and the Great Barrier Reef on this amazing Australia adventure.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 5-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> All Meals Included</span>
+            <span><i class="fas fa-car"></i> Luxury Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="australia-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Switzerland Tour -->
+                <div class="package-card" id="switzerland-tour" data-region="International" data-duration="7-10" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/switzerland.jpg" alt="Switzerland Tour">
+        <div class="package-price">From ₹85,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Switzerland Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 9 Days / 8 Nights</p>
+        <p class="package-description">Enjoy the Swiss Alps, scenic lakes, and charming cities like Zurich and Lucerne on this luxury tour.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 5-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> All Meals Included</span>
+            <span><i class="fas fa-car"></i> Luxury Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="switzerland-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- USA Tour -->
+                <div class="package-card" id="usa-tour" data-region="International" data-duration="10-14" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/usa.jpg" alt="USA Tour">
+        <div class="package-price">From ₹1,50,999</div>
+    </div>
+    <div class="package-content">
+        <h3>USA Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 14 Days / 13 Nights</p>
+        <p class="package-description">A cross-country tour of the USA, from New York to Los Angeles, including sightseeing in all major cities.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 5-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> All Meals Included</span>
+            <span><i class="fas fa-car"></i> Luxury Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="usa-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Kenya Safari Tour -->
+                <div class="package-card" id="kenya-safari-tour" data-region="International" data-duration="6-9" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/kenya.jpg" alt="Kenya Safari Tour">
+        <div class="package-price">From ₹59,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Kenya Safari Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 7 Days / 6 Nights</p>
+        <p class="package-description">Witness the Big Five and explore the Maasai Mara with this ultimate African safari experience.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> Safari Lodges</span>
+            <span><i class="fas fa-utensils"></i> All Meals</span>
+            <span><i class="fas fa-car"></i> Safari Jeeps</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="kenya-safari-tour">View Details</button>
+    </div>
+                </div>
+                
+                <!-- Canada Tour -->
+                <div class="package-card" id="canada-tour" data-region="International" data-duration="7-10" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/canada.jpg" alt="Canada Tour">
+        <div class="package-price">From ₹94,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Canada Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 9 Days / 8 Nights</p>
+        <p class="package-description">Experience Niagara Falls, Toronto, and the Rockies in this expansive Canada tour package.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> Breakfast & Dinner</span>
+            <span><i class="fas fa-car"></i> Guided Transport</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="canada-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Turkey Tour -->
+                <div class="package-card" id="turkey-tour" data-region="International" data-duration="6-9" data-budget="mid-range">
+    <div class="package-image">
+        <img src="images/turkey.jpg" alt="Turkey Tour">
+        <div class="package-price">From ₹47,999</div>
+    </div>
+    <div class="package-content">
+        <h3>Turkey Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 7 Days / 6 Nights</p>
+        <p class="package-description">Visit Istanbul, Cappadocia, and Pamukkale with hot air balloon rides and rich Turkish culture.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+            <span><i class="fas fa-utensils"></i> Breakfast & Dinner</span>
+            <span><i class="fas fa-car"></i> Airport Transfers</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="turkey-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Australia Tour -->
+                <div class="package-card" id="australia-tour" data-region="International" data-duration="8-11" data-budget="luxury">
+    <div class="package-image">
+        <img src="images/australia.jpg" alt="Australia Tour">
+        <div class="package-price">From ₹1,15,000</div>
+    </div>
+    <div class="package-content">
+        <h3>Australia Tour</h3>
+        <p class="package-duration"><i class="fas fa-clock"></i> 10 Days / 9 Nights</p>
+        <p class="package-description">Explore Sydney, Melbourne, the Great Barrier Reef, and Australia’s stunning coastline and wildlife.</p>
+        <div class="package-features">
+            <span><i class="fas fa-hotel"></i> Premium Hotels</span>
+            <span><i class="fas fa-utensils"></i> All Meals</span>
+            <span><i class="fas fa-car"></i> City Transfers</span>
+        </div>
+        <button class="btn-primary package-details-btn" data-package="australia-tour">View Details</button>
+    </div>
+                </div>
+
+                <!-- Andhra Pradesh Tour -->
+                <div class="package-card" id="andhra-pradesh-tour" data-region="India-Domestic" data-duration="4-7" data-budget="budget">
+                    <div class="package-image">
+                        <img src="images/andhra.jpg" alt="Andhra Pradesh Tour">
+                        <div class="package-price">From ₹14,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Andhra Pradesh Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Explore Tirupati, Araku Valley, and historical Vizag with spiritual and scenic highlights.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> Budget Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals Included</span>
+                            <span><i class="fas fa-car"></i> Train & Car Travel</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="andhra-pradesh-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Madhya Pradesh Tour -->
+                <div class="package-card" id="madhya-pradesh-tour" data-region="India-Domestic" data-duration="4-7" data-budget="budget">
+                    <div class="package-image">
+                        <img src="images/madhya-pradesh.jpg" alt="Madhya Pradesh Tour">
+                        <div class="package-price">From ₹15,499</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Madhya Pradesh Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Explore ancient temples of Khajuraho, wildlife and cultural heritage of Gwalior.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> Budget Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals</span>
+                            <span><i class="fas fa-car"></i> Guided Travel</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="madhya-pradesh-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Rajasthan Desert Safari -->
+                <div class="package-card" id="rajasthan-desert" data-region="north-india" data-duration="4-7" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images/rajasthan-desert.jpg" alt="Rajasthan Desert Safari">
+                        <div class="package-price">From ₹18,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Rajasthan Desert Safari</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Experience the vibrant culture and desert landscapes of Rajasthan.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="rajasthan-desert">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Rajasthan Heritage Tour -->
+                <div class="package-card" id="rajasthan-heritage" data-region="north-india" data-duration="8-14" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1570789210967-2cac24afeb00" alt="Rajasthan Heritage Tour">
+                        <div class="package-price">From ₹28,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Rajasthan Heritage Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 8 Days / 7 Nights</p>
+                        <p class="package-description">Discover the royal heritage, forts, and palaces of colorful Rajasthan.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="rajasthan-heritage">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Goa Beach Vacation -->
+                <div class="package-card" id="goa-beaches" data-region="west-india" data-duration="4-7" data-budget="budget">
+                    <div class="package-image">
+                        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2" alt="Goa Beach Vacation">
+                        <div class="package-price">From ₹14,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Goa Beach Vacation</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Relax on the beautiful beaches of Goa and enjoy water sports and nightlife.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Breakfast</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="goa-beaches">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Himalayan Adventure -->
+                <div class="package-card" id="himalayan-adventure" data-region="north-india" data-duration="8-14" data-budget="mid-range">
+                    <div class="package-image">
+                        <img src="images/hero-bg.jpg" alt="Himalayan Adventure">
+                        <div class="package-price">From ₹22,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Himalayan Adventure</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 10 Days / 9 Nights</p>
+                        <p class="package-description">Trek through the majestic Himalayas and experience the beauty of mountain villages.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> All Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="himalayan-adventure">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- Uttarakhand Tour -->
+                <div class="package-card" id="uttarakhand-tour" data-region="India-Domestic" data-duration="4-7" data-budget="budget">
+                    <div class="package-image">
+                        <img src="images/uttarakhand.jpg" alt="Uttarakhand Tour">
+                        <div class="package-price">From ₹16,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Uttarakhand Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Discover the spiritual towns of Rishikesh and Haridwar along with the beauty of Mussoorie.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> Standard Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="uttarakhand-tour">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- Leh Ladakh Tour -->
+                <div class="package-card" id="leh-ladakh-tour" data-region="India-Domestic" data-duration="8-14" data-budget="luxury">
+                    <div class="package-image">
+                        <img src="images/ladakh.jpg" alt="Leh Ladakh Tour">
+                        <div class="package-price">From ₹35,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Leh Ladakh Tour</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 10 Days / 9 Nights</p>
+                        <p class="package-description">Experience the breathtaking landscapes and unique culture of Leh and Ladakh.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 4-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> All Meals</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="leh-ladakh-tour">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Spiritual Journey -->
+                <div class="package-card" id="spiritual-journey" data-region="north-india" data-duration="4-7" data-budget="budget">
+                    <div class="package-image">
+                        <img src="images/varanasi-ghat.png" alt="Spiritual Journey">
+                        <div class="package-price">From ₹12,999</div>
+                    </div>
+                    <div class="package-content">
+                        <h3>Spiritual Journey</h3>
+                        <p class="package-duration"><i class="fas fa-clock"></i> 5 Days / 4 Nights</p>
+                        <p class="package-description">Visit the holy city of Varanasi and experience the spiritual side of India.</p>
+                        <div class="package-features">
+                            <span><i class="fas fa-hotel"></i> 3-Star Hotels</span>
+                            <span><i class="fas fa-utensils"></i> Breakfast</span>
+                            <span><i class="fas fa-car"></i> Transport</span>
+                        </div>
+                        <button class="btn-primary package-details-btn" data-package="spiritual-journey">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination" id="pagination-controls">
+                <button id="prev-page" class="pagination-arrow" disabled>&lt;</button>
+                <div id="pagination-buttons"></div>
+                <button id="next-page" class="pagination-arrow">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Detail Popup -->
+    <div class="search-popup" id="package-detail-popup">
+        <div class="search-container" style="max-width: 800px;">
+            <div class="close-btn" id="close-package-detail">
+                <i class="fas fa-times"></i>
+            </div>
+            <div id="package-detail-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Package Details Templates (Hidden) -->
+    <div id="package-templates" style="display: none;">
+        <!-- Golden Triangle Tour -->
+        <div id="golden-triangle-detail">
+            <h2>Golden Triangle Tour</h2>
+            <p class="package-duration"><i class="fas fa-clock"></i> 6 Days / 5 Nights</p>
+            <p class="package-price-large">₹24,999 per person</p>
+            
+            <div class="package-detail">
+                <h3>Tour Overview</h3>
+                <p>Experience the rich history and culture of North India with our Golden Triangle Tour. This classic itinerary takes you through Delhi, Agra, and Jaipur, showcasing the country's most iconic landmarks including the Taj Mahal, Red Fort, and Amber Palace.</p>
+                
+                <h3>Inclusions</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> 5 nights accommodation in 4-star hotels</li>
+                    <li><i class="fas fa-check"></i> Daily breakfast and dinner</li>
+                    <li><i class="fas fa-check"></i> Private air-conditioned vehicle for transportation</li>
+                    <li><i class="fas fa-check"></i> Professional English-speaking tour guide</li>
+                    <li><i class="fas fa-check"></i> All entrance fees to monuments</li>
+                    <li><i class="fas fa-check"></i> Welcome drink on arrival</li>
+                    <li><i class="fas fa-check"></i> All applicable taxes</li>
+                </ul>
+                
+                <h3>Itinerary</h3>
+                <div class="itinerary-list">
+                    <div class="itinerary-day">
+                        <div class="day-title">Day 1: Arrival in Delhi</div>
+                        <p>Arrive at Delhi International Airport where our representative will meet you. Transfer to your hotel for check-in. Rest of the day at leisure. Overnight in Delhi.</p>
+                    </div>
+                    <div class="itinerary-day">
+                        <div class="day-title">Day 2: Delhi City Tour</div>
+                        <p>After breakfast, enjoy a full-day sightseeing tour of Old and New Delhi. Visit Jama Masjid, Red Fort, Chandni Chowk, Raj Ghat, Humayun's Tomb, Qutub Minar, and India Gate. Overnight in Delhi.</p>
+                    </div>
+                    <div class="itinerary-day">
+                        <div class="day-title">Day 3: Delhi to Agra</div>
+                        <p>After breakfast, drive to Agra (approx. 4 hours). Visit Agra Fort and witness the breathtaking Taj Mahal at sunset. Overnight in Agra.</p>
+                    </div>
+                    <div class="itinerary-day">
+                        <div class="day-title">Day 4: Agra to Jaipur via Fatehpur Sikri</div>
+                        <p>Early morning visit to Taj Mahal at sunrise (optional). After breakfast, drive to Jaipur, visiting Fatehpur Sikri en route. Arrive in Jaipur by evening. Overnight in Jaipur.</p>
+                    </div>
+                    <div class="itinerary-day">
+                        <div class="day-title">Day 5: Jaipur City Tour</div>
+                        <p>After breakfast, visit Amber Fort with an elephant ride to the entrance. Later, explore City Palace, Jantar Mantar Observatory, and Hawa Mahal. Enjoy shopping in the local markets. Overnight in Jaipur.</p>
+                    </div>
+                    <div class="itinerary-day">
+                        <div class="day-title">Day 6: Jaipur to Delhi - Departure</div>
+                        <p>After breakfast, drive back to Delhi (approx. 5 hours). Transfer to the airport for your onward journey.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="booking-form">
+                <h3>Book This Package</h3>
+                <form id="booking-form-golden-triangle">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="booking-name">Full Name</label>
+                            <input type="text" id="booking-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-email">Email</label>
+                            <input type="email" id="booking-email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="booking-phone">Phone</label>
+                            <input type="tel" id="booking-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-date">Travel Date</label>
+                            <input type="date" id="booking-date" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="booking-adults">Adults</label>
+                            <select id="booking-adults" required>
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="booking-children">Children</label>
+                            <select id="booking-children">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-message">Special Requirements</label>
+                        <textarea id="booking-message" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Book Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Wanderlust Travels</h3>
+                    <p>Your trusted partner for exploring the wonders of India. We provide unforgettable travel experiences with personalized service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="destinations.html#taj-mahal">Taj Mahal, Agra</a></li>
+                        <li><a href="destinations.html#jaipur">Jaipur, Rajasthan</a></li>
+                        <li><a href="destinations.html#goa">Beaches of Goa</a></li>
+                        <li><a href="destinations.html#kerala">Kerala Backwaters</a></li>
+                        <li><a href="destinations.html#varanasi">Varanasi Ghats</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Mumbai, India</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@wanderlusttravels.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 7:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wanderlust Travels. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Package Filter Functionality
+            const filterForm = document.getElementById('package-filter-form');
+            const packageCards = document.querySelectorAll('.package-card');
+            
+            if (filterForm) {
+                filterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const destinationFilter = document.getElementById('filter-destination').value;
+                    const durationFilter = document.getElementById('filter-duration').value;
+                    const budgetFilter = document.getElementById('filter-budget').value;
+                    
+                    packageCards.forEach(card => {
+                        let showCard = true;
+                        
+                        if (destinationFilter && card.dataset.region !== destinationFilter) {
+                            showCard = false;
+                        }
+                        
+                        if (durationFilter && card.dataset.duration !== durationFilter) {
+                            showCard = false;
+                        }
+                        
+                        if (budgetFilter && card.dataset.budget !== budgetFilter) {
+                            showCard = false;
+                        }
+                        
+                        card.style.display = showCard ? 'block' : 'none';
+                    });
+                });
+            }
+            
+            // Package Detail Popup
+            const packageDetailBtns = document.querySelectorAll('.package-details-btn');
+            const packageDetailPopup = document.getElementById('package-detail-popup');
+            const closePackageDetail = document.getElementById('close-package-detail');
+            const packageDetailContent = document.getElementById('package-detail-content');
+            
+            if (packageDetailBtns.length > 0 && packageDetailPopup && closePackageDetail) {
+                packageDetailBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const packageId = this.dataset.package;
+                        const packageDetailTemplate = document.getElementById(`${packageId}-detail`);
+                        
+                        if (packageDetailTemplate) {
+                            packageDetailContent.innerHTML = packageDetailTemplate.innerHTML;
+                            packageDetailPopup.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                            
+                            // Set up booking form submission
+                            const bookingForm = packageDetailContent.querySelector(`#booking-form-${packageId}`);
+                            if (bookingForm) {
+                                bookingForm.addEventListener('submit', function(e) {
+                                    e.preventDefault();
+                                    alert('Thank you for your booking request! Our team will contact you shortly to confirm your reservation.');
+                                    packageDetailPopup.classList.remove('active');
+                                    document.body.style.overflow = 'auto';
+                                });
+                            }
+                        } else {
+                            // If template doesn't exist, show a message
+                            packageDetailContent.innerHTML = `
+                                <h2>${packageId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h2>
+                                <p>Detailed information about this package will be available soon. Please contact us for more details.</p>
+                                <button class="btn-primary" onclick="window.location.href='contact.html'">Contact Us</button>
+                            `;
+                            packageDetailPopup.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    });
+                });
+                
+                closePackageDetail.addEventListener('click', function() {
+                    packageDetailPopup.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+                
+                packageDetailPopup.addEventListener('click', function(e) {
+                    if (e.target === packageDetailPopup) {
+                        packageDetailPopup.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const packageCards = document.querySelectorAll('.package-card');
+            const paginationControls = document.getElementById('pagination-controls');
+            const paginationButtonsContainer = document.getElementById('pagination-buttons');
+            const prevPageButton = document.getElementById('prev-page');
+            const nextPageButton = document.getElementById('next-page');
+            const cardsPerPage = 12; // Number of cards per page
+            let currentPage = 1;
+
+            function displayCards() {
+                const startIndex = (currentPage - 1) * cardsPerPage;
+                const endIndex = startIndex + cardsPerPage;
+
+                packageCards.forEach((card, index) => {
+                    card.style.display = index >= startIndex && index < endIndex ? 'block' : 'none';
+                });
+
+                // Enable/Disable arrow buttons
+                prevPageButton.disabled = currentPage === 1;
+                nextPageButton.disabled = currentPage === Math.ceil(packageCards.length / cardsPerPage);
+            }
+
+            function setupPagination() {
+                const totalPages = Math.ceil(packageCards.length / cardsPerPage);
+                paginationButtonsContainer.innerHTML = '';
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.textContent = i;
+                    pageButton.classList.add('pagination-btn');
+                    if (i === currentPage) pageButton.classList.add('active');
+                    pageButton.addEventListener('click', () => {
+                        currentPage = i;
+                        displayCards();
+                        setupPagination();
+                    });
+                    paginationButtonsContainer.appendChild(pageButton);
+                }
+            }
+
+            // Add event listeners for arrow buttons
+            prevPageButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayCards();
+                    setupPagination();
+                }
+            });
+
+            nextPageButton.addEventListener('click', () => {
+                const totalPages = Math.ceil(packageCards.length / cardsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayCards();
+                    setupPagination();
+                }
+            });
+
+            // Initialize Pagination
+            displayCards();
+            setupPagination();
+        });
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const packageCards = document.querySelectorAll('.package-card');
+    const paginationControls = document.getElementById('pagination-controls');
+    const paginationButtonsContainer = document.getElementById('pagination-buttons');
+    const prevPageButton = document.getElementById('prev-page');
+    const nextPageButton = document.getElementById('next-page');
+    const cardsPerPage = 12;
+    let currentPage = 1;
+
+    function displayCards() {
+        const startIndex = (currentPage - 1) * cardsPerPage;
+        const endIndex = startIndex + cardsPerPage;
+
+        packageCards.forEach((card, index) => {
+            card.style.display = index >= startIndex && index < endIndex ? 'block' : 'none';
+        });
+
+        // Scroll to the top of the package list
+        const packageList = document.getElementById('package-list');
+        if (packageList) {
+            packageList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Update arrow buttons
+        prevPageButton.disabled = currentPage === 1;
+        nextPageButton.disabled = currentPage === Math.ceil(packageCards.length / cardsPerPage);
+    }
+
+    function setupPagination() {
+        const totalPages = Math.ceil(packageCards.length / cardsPerPage);
+        paginationButtonsContainer.innerHTML = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = i;
+            pageButton.classList.add('pagination-btn');
+            if (i === currentPage) pageButton.classList.add('active');
+            pageButton.addEventListener('click', () => {
+                currentPage = i;
+                displayCards();
+                setupPagination();
+            });
+            paginationButtonsContainer.appendChild(pageButton);
+        }
+    }
+
+    // Event listeners for arrow buttons
+    prevPageButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            displayCards();
+            setupPagination();
+        }
+    });
+
+    nextPageButton.addEventListener('click', () => {
+        const totalPages = Math.ceil(packageCards.length / cardsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayCards();
+            setupPagination();
+        }
+    });
+
+    // Initialize Pagination
+    displayCards();
+    setupPagination();
+});
+</script>
+    <script src="image-manager.js"></script>
+</body>
+</html>

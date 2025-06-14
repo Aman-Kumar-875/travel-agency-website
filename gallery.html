@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Wanderlust Travels</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles specific to gallery page */
+        .page-banner {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1506461883276-594a12b11cf3') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+        
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            height: 250px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-caption h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .gallery-caption p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Lightbox styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 5px;
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .lightbox-close:hover {
+            color: var(--primary-color);
+        }
+        
+        .lightbox-prev, .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        .lightbox-prev:hover, .lightbox-next:hover {
+            background-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Wanderlust <span>Travels</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="packages.html">Packages</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Photo Gallery</h1>
+            <p>Explore the beauty of India through our collection of stunning photographs</p>
+        </div>
+    </section>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/+918851332855" class="whatsapp-float" target="_blank">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp" class="whatsapp-icon"/>
+    </a>
+    <!-- Gallery Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Travel Moments</h2>
+                <p>A visual journey through India's most breathtaking destinations</p>
+            </div>
+
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="north-india">North India</button>
+                <button class="filter-btn" data-filter="south-india">South India</button>
+                <button class="filter-btn" data-filter="east-india">East India</button>
+                <button class="filter-btn" data-filter="west-india">West India</button>
+                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                <button class="filter-btn" data-filter="culture">Culture</button>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- North India -->
+                <div class="gallery-item" data-category="north-india">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bada" alt="Taj Mahal, Agra">
+                    <div class="gallery-caption">
+                        <h3>Taj Mahal</h3>
+                        <p>Agra, Uttar Pradesh</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="north-india culture">
+                    <img src="images/hawamahal.jpg" alt="Hawa Mahal, Jaipur">
+                    <div class="gallery-caption">
+                        <h3>Hawa Mahal</h3>
+                        <p>Jaipur, Rajasthan</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="north-india">
+                    <img src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073" alt="Golden Temple, Amritsar">
+                    <div class="gallery-caption">
+                        <h3>Golden Temple</h3>
+                        <p>Amritsar, Punjab</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="north-india">
+                    <img src="images/ladakh.jpg" alt="Ladakh Mountains">
+                    <div class="gallery-caption">
+                        <h3>Pangong Lake</h3>
+                        <p>Ladakh</p>
+                    </div>
+                </div>
+
+                <!-- South India -->
+                <div class="gallery-item" data-category="south-india">
+                    <img src="images/kerala-backwaters.jpg" alt="Kerala Backwaters">
+                    <div class="gallery-caption">
+                        <h3>Backwaters</h3>
+                        <p>Alleppey, Kerala</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="south-india culture">
+                    <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220" alt="Meenakshi Temple">
+                    <div class="gallery-caption">
+                        <h3>Meenakshi Temple</h3>
+                        <p>Madurai, Tamil Nadu</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="south-india">
+                    <img src="images\tea_garden.jpg" alt="Tea Gardens">
+                    <div class="gallery-caption">
+                        <h3>Tea Gardens</h3>
+                        <p>Munnar, Kerala</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="south-india">
+                    <img src="images\mysore_palace.jpg" alt="Mysore Palace">
+                    <div class="gallery-caption">
+                        <h3>Mysore Palace</h3>
+                        <p>Mysore, Karnataka</p>
+                    </div>
+                </div>
+
+                <!-- East India -->
+                <div class="gallery-item" data-category="east-india">
+                    <img src="https://images.unsplash.com/photo-1591089101324-2280d9260000" alt="Darjeeling Tea Gardens">
+                    <div class="gallery-caption">
+                        <h3>Tea Gardens</h3>
+                        <p>Darjeeling, West Bengal</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="east-india culture">
+                    <img src="images/varanasi-ghat.png" alt="Varanasi Ghats">
+                    <div class="gallery-caption">
+                        <h3>Ghats at Dawn</h3>
+                        <p>Varanasi, Uttar Pradesh</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="east-india">
+                    <img src="images\sunderbans.png" alt="Sundarbans">
+                    <div class="gallery-caption">
+                        <h3>Sundarbans</h3>
+                        <p>West Bengal</p>
+                    </div>
+                </div>
+
+                <!-- West India -->
+                <div class="gallery-item" data-category="west-india">
+                    <img src="images/goa-beaches.jpeg" alt="Goa Beaches">
+                    <div class="gallery-caption">
+                        <h3>Palolem Beach</h3>
+                        <p>Goa</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="west-india culture">
+                    <img src="images/city_palace.jpg" alt="Udaipur Palace">
+                    <div class="gallery-caption">
+                        <h3>City Palace</h3>
+                        <p>Udaipur, Rajasthan</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="west-india">
+                    <img src="images/runn_of_kutch.jpg" alt="Rann of Kutch">
+                    <div class="gallery-caption">
+                        <h3>White Desert</h3>
+                        <p>Rann of Kutch, Gujarat</p>
+                    </div>
+                </div>
+
+                <!-- Wildlife -->
+                <div class="gallery-item" data-category="wildlife">
+                    <img src="images\bengal_tiger.jpg" alt="Bengal Tiger">
+                    <div class="gallery-caption">
+                        <h3>Bengal Tiger</h3>
+                        <p>Ranthambore National Park</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="wildlife">
+                    <img src="images\wild_elephants.jpg" alt="Elephants">
+                    <div class="gallery-caption">
+                        <h3>Wild Elephants</h3>
+                        <p>Jim Corbett National Park</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="wildlife">
+                    <img src="images\one_horned_rhino.jpg" alt="One-Horned Rhino">
+                    <div class="gallery-caption">
+                        <h3>One-Horned Rhino</h3>
+                        <p>Kaziranga National Park</p>
+                    </div>
+                </div>
+
+                <!-- Culture -->
+                <div class="gallery-item" data-category="culture">
+                    <img src="images\holi_festival.jpg" alt="Holi Festival">
+                    <div class="gallery-caption">
+                        <h3>Holi Festival</h3>
+                        <p>Mathura, Uttar Pradesh</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="culture">
+                    <img src="images\kathakali_dancer.jpg" alt="Kathakali Dancer">
+                    <div class="gallery-caption">
+                        <h3>Kathakali Dancer</h3>
+                        <p>Kerala</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="culture">
+                    <img src="images\pushkar-fair.jpg" alt="Pushkar Camel Fair">
+                    <div class="gallery-caption">
+                        <h3>Camel Fair</h3>
+                        <p>Pushkar, Rajasthan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="gallery-lightbox">
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-image">
+            <div class="lightbox-caption">
+                <h3></h3>
+                <p></p>
+            </div>
+        </div>
+        <div class="lightbox-close"><i class="fas fa-times"></i></div>
+        <div class="lightbox-prev"><i class="fas fa-chevron-left"></i></div>
+        <div class="lightbox-next"><i class="fas fa-chevron-right"></i></div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Wanderlust Travels</h3>
+                    <p>Your trusted partner for exploring the wonders of India. We provide unforgettable travel experiences with personalized service.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="packages.html">Packages</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Destinations</h3>
+                    <ul>
+                        <li><a href="destinations.html#taj-mahal">Taj Mahal, Agra</a></li>
+                        <li><a href="destinations.html#jaipur">Jaipur, Rajasthan</a></li>
+                        <li><a href="destinations.html#goa">Beaches of Goa</a></li>
+                        <li><a href="destinations.html#kerala">Kerala Backwaters</a></li>
+                        <li><a href="destinations.html#varanasi">Varanasi Ghats</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Information</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Mumbai, India</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-envelope"></i> info@wanderlusttravels.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 7:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Wanderlust Travels. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gallery Filtering
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Lightbox Functionality
+            const lightbox = document.getElementById('gallery-lightbox');
+            const lightboxImage = lightbox.querySelector('.lightbox-image');
+            const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+            const lightboxClose = lightbox.querySelector('.lightbox-close');
+            const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+            const lightboxNext = lightbox.querySelector('.lightbox-next');
+            
+            let currentIndex = 0;
+            const visibleItems = () => Array.from(galleryItems).filter(item => item.style.display !== 'none');
+            
+            // Open lightbox when clicking on gallery item
+            galleryItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const items = visibleItems();
+                    currentIndex = items.indexOf(this);
+                    
+                    const img = this.querySelector('img');
+                    const caption = this.querySelector('.gallery-caption');
+                    
+                    lightboxImage.src = img.src;
+                    lightboxImage.alt = img.alt;
+                    lightboxCaption.querySelector('h3').textContent = caption.querySelector('h3').textContent;
+                    lightboxCaption.querySelector('p').textContent = caption.querySelector('p').textContent;
+                    
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close lightbox
+            lightboxClose.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Navigate to previous image
+            lightboxPrev.addEventListener('click', function() {
+                const items = visibleItems();
+                currentIndex = (currentIndex - 1 + items.length) % items.length;
+                
+                const item = items[currentIndex];
+                const img = item.querySelector('img');
+                const caption = item.querySelector('.gallery-caption');
+                
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightboxCaption.querySelector('h3').textContent = caption.querySelector('h3').textContent;
+                lightboxCaption.querySelector('p').textContent = caption.querySelector('p').textContent;
+            });
+            
+            // Navigate to next image
+            lightboxNext.addEventListener('click', function() {
+                const items = visibleItems();
+                currentIndex = (currentIndex + 1) % items.length;
+                
+                const item = items[currentIndex];
+                const img = item.querySelector('img');
+                const caption = item.querySelector('.gallery-caption');
+                
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightboxCaption.querySelector('h3').textContent = caption.querySelector('h3').textContent;
+                lightboxCaption.querySelector('p').textContent = caption.querySelector('p').textContent;
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                } else if (e.key === 'ArrowLeft') {
+                    lightboxPrev.click();
+                } else if (e.key === 'ArrowRight') {
+                    lightboxNext.click();
+                }
+            });
+        });
+    </script>
+    <script src="image-manager.js"></script>
+</body>
+</html>
